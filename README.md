@@ -10,7 +10,7 @@
    Merupakan lampiran berupa diagram alir yang menjelaskan cara kerja program
 
 - Berkas Laporan Program Perpustakaan
-   Merupakan lampiran berupa gagasan 
+   Merupakan ide/gagasan berupa latar belakang, Basis, Flowchart, Fitur, dan Daftar Pustaka
 
 - Berkas Program Perpustakaan FT 11 Maret
    Merupakan file yang berisi kode-kode untuk menjalankan Program Perpustakaan FT 11 Maret
