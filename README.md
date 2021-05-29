@@ -19,7 +19,7 @@
    Merupakan berkas database dalam format .txt yang memuat nama buku, nama pengarang, nama toko, tahun terbit buku, harga buku, dan stok buku
 
 - Berkas README.md
-   Merupakan Merupakan penjelasan singkat isi dari repository
+   Merupakan penjelasan singkat isi dari repository
    
 # System Requirement
   [berisi persyaratan yang diperlukan untuk menjalankan program, seperti spesifikasi OS, versi python, berkas tambahan pendukung program, library yang harus terpasang pada python, dll. Ditulis berurut ke bawah]
