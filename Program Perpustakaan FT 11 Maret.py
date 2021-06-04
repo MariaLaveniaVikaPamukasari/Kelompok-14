@@ -1,4 +1,6 @@
 import os
+import sys
+
 
 def pembuka():
     print("        Selamat Datang di Perpustakaan FT 11 Maret          ")
@@ -21,13 +23,14 @@ def pembuka():
             print("Nama anggota salah")
             kembalikan_buku()
 
-        b = "Pengembalian-" + name + NIM+ ".txt"
+        b = "Pengembalian-" + name + NIM + ".txt"
         with open(b, "w+")as f:
             f.write("                Perpustakaan FT 11 Maret \n")
             f.write("                   Dikembalikan oleh: " + name + "\n")
             f.write("    Tanggal: " + getDate() + "    Waktu:" + getTime() + "\n\n")
             f.write("S.N.\t\tJudul Buku\t\tTotal\n")
         menu_awal()
+
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -54,23 +57,21 @@ def menu_awal():
         display_buku()
         menu_awal()
 
-    if choice== "2" :
+    if choice == "2":
         pinjamkan_buku()
         menu_awal()
 
-    if choice=="3":
+    if choice == "3":
         kembalikan_buku()
         menu_awal()
 
-    if choice=='4':
+    if choice == '4':
         referensi_buku()
         menu_awal()
 
-    if choice=='5':
+    if choice == '5':
         kritik_saran()
         menu_awal()
-
-
 
 
 def daftar():
@@ -86,8 +87,8 @@ def daftar():
             break
         print("")
 
-
     filepinjam = "Pinjaman-" + NamaDepan + NIM + ".txt"
+
 
 def listSplit():
     global judul_buku
@@ -101,11 +102,12 @@ def listSplit():
     tahunterbit = []
     toko = []
     harga = []
-    jumlah_stok=[]
+    jumlah_stok = []
     with open("daftarbuku_toko", "r+") as f:
 
         lines = f.readlines()
         lines = [x.strip('\n') for x in lines]
+
         for i in range(len(lines)):
             ind = 0
             for a in lines[i].split(','):
@@ -115,14 +117,15 @@ def listSplit():
                     pengarang.append(a)
                 elif (ind == 2):
                     toko.append(a)
-                elif (ind== 3):
+                elif (ind == 3):
                     tahunterbit.append(a)
                 elif (ind == 4):
-                   harga.append(a.strip("Rp"))
+                    harga.append(a.strip("Rp"))
                 elif (ind == 5):
-                   jumlah_stok.append(a)
+                    jumlah_stok.append(a)
 
                 ind += 1
+
 
 def getDate():
     import datetime
@@ -141,9 +144,12 @@ def display_buku():
         lines = f.read()
         print(lines)
         print()
-#meminjamkan buku
+
+
+# meminjamkan buku
 
 def pinjamkan_buku():
+    listSplit()
     success = False
     while (True):
         NamaDepan = input("Masukkan nama depan peminjam: ")
@@ -158,7 +164,7 @@ def pinjamkan_buku():
         print("")
     display_buku()
 
-    t = "Pinjaman-" + NamaDepan + NIM+ ".txt"
+    t = "Pinjaman-" + NamaDepan + NIM + ".txt"
     with open(t, "w+") as f:
         f.write("               Perpustakaan FT 11 Maret \n")
         f.write("                   Dipinjam oleh: " + NamaDepan + " " + NIM + "\n")
@@ -180,10 +186,10 @@ def pinjamkan_buku():
 
                     jumlah_stok[a] = int(jumlah_stok[a]) - 1
                     with open("daftarbuku_toko", "r+") as f:
-                        for i in range(8):
-                            f.write(judul_buku[i] + "," + pengarang[i] + "," + str(jumlah_stok[i]) + "," + "Rp" + harga[
-                                i] + "\n")
-                            continue
+                        for i in range(len(pengarang)):
+                            f.write(
+                                judul_buku[i] + "," + pengarang[i] + "," + toko[i] + "," + tahunterbit[i] + "," + "Rp" +
+                                harga[i] + "," + str(jumlah_stok[i]) + "\n")
 
                     # jika buku yang dipinjam lebih dari 1
                     loop = True
@@ -203,9 +209,9 @@ def pinjamkan_buku():
 
                                 jumlah_stok[a] = int(jumlah_stok[a]) - 1
                                 with open("daftarbuku_toko", "r+") as f:
-                                    for i in range(8):
-                                        f.write(judul_buku[i] + "," + pengarang[i] + "," + str(
-                                            jumlah_stok[i]) + "," + "Rp" + harga[i] + "\n")
+                                    for i in range(len(pengarang)):
+                                        f.write(judul_buku[i] + "," + pengarang[i] + "," + toko[i] + "," + tahunterbit[
+                                            i] + "," + "Rp" + harga[i] + "," + str(jumlah_stok[i]) + "\n")
                                         success = False
                                         continue
                             else:
@@ -227,18 +233,17 @@ def pinjamkan_buku():
             except IndexError:
                 print("")
                 print("Pilih buku sesuai nomor.")
+                sys.exit()
         except ValueError:
             print("")
             print("Pilih sesuai petunjuk !.")
 
 
-
-
-#mengembalikan buku
+# mengembalikan buku
 def kembalikan_buku():
     name = input("Masukkan nama peminjam: ")
     NIM = input("Masukkan 5 NIM terakhir: ")
-    a = "Pinjaman-" + name + ".txt"
+    a = "Pinjaman-" + name + NIM + ".txt"
     try:
         with open(a, "r") as f:
             lines = f.readlines()
@@ -260,46 +265,37 @@ def kembalikan_buku():
     a = int(input("berapa total buku Anda?"))
     d = str(input("apakah Anda mengembalikan setelah lebih dari 3 hari?(y/n)"))
     if d == 'y':
-        p = (2000+(a * 500))
+        p = (2000 + (a * 500))
     elif d == 'n':
-        p = (a*500)
+        p = (a * 500)
 
-    print("total yang harus anda bayar adalah sebesar", p,"rupiah")
+    print("total yang harus anda bayar adalah sebesar", p, "rupiah")
 
-#referensi buku
+
+# referensi buku
 def referensi_buku():
-    import csv
-
-    opbook = open("daftarbuku_toko")
-    daftarbook = list(csv.reader(opbook, delimiter=","))
-
-    status = True
+    listSplit()
     ulang = "Y"
     while ulang.upper() == "Y":
         judul = str(input("Masukkan judul buku : "))
         writer = str(input("Masukkan pengarang buku : "))
         tahun = str(input("Masukkan tahun terbit buku : "))
-        for i in range(len(daftarbook)):
-            if ((daftarbook[i][0].upper() == judul.upper()) and (daftarbook[i][1].upper() == writer.upper()) and (
-                    daftarbook[i][2] == tahun)):
-                status = True
-                break
-            else:
-                status = False
-        if (status == True):
-            print("Buku dengan judul '%s' tahun terbit '%s' dengan pengarang '%s' dapat ditemukan di '%s'" % (
-            daftarbook[i][0], daftarbook[i][2], daftarbook[i][1], daftarbook[i][3]))
+        if (judul.title() in judul_buku) and (writer.title() in pengarang) and (tahun in tahunterbit):
+            i = judul_buku.index(judul.title())
+            print(f"Buku dengan judul {judul}, tahun terbit {tahun}, dengan pengarang{writer} dapat ditemukan di {toko[i]}")
         else:
             print("Maaf buku tidak ditemukan di toko manapun")
         ulang = str(input("Ulangi pencarian [Y/T] : "))
     print("Program selesai, terima kasih")
 pembuka()
 
-#kritikdansaran
+
+# kritikdansaran
 def kritik_saran():
     kritik = input("Masukkan kritik : ")
     saran = input("Masukkan saran : ")
 
     print(kritik, saran)
+
 
 menu_awal()
