@@ -51,7 +51,7 @@ def menu_awal():
     print(" 5 Kritik dan Saran")
     print(" 6 Keluar")
     print("------------------------------------------------------")
-    choice = input("pilih nomor yang mau dihitung (1/2/3/4/5):")
+    choice = input("pilih nomor fitur yang ingin Anda gunakan (1/2/3/4/5):")
 
     if choice == "1":
         display_buku()
