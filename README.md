@@ -2,7 +2,8 @@
 
 # Tugas Besar Praktikum Program Komputer 2021 Kelas B Kelompok 14
 
- Program ini dibuat untuk [tujuan pembuatan program]
+ Program ini dibuat untuk Menghindari penggunaan kertas dalam pendataan perpustakaan, Memudahkan pengunjung dalam melakukan peminjaman dan pengembalian
+buku, Memudahkan pengunjung dalam menemukan informasi terkait buku yang sedang dicarinya. Jika buku yang sedang dicari oleh pengunjung tidak ada dalam perpustakaan pada saat itu, maka program dapat memberikan informasi mengenai toko buku terdekat yang menyediakannya. Hal tersebut, selain memudahkan pengunjung tetapi juga dapat menjalin informasi yang baik antara perpustakaan dengan berbagai toko buku demi kelancaran arus informasi buku, Menyediakan wadah bagi pengunjung untuk memberikan kritik dan saran terhadap pelayanan perpustakaan,Serta meningkatkan nilai ekonomis dan daya saing perpustakaan dengan aplikasi modern lainnya
 
 # Repository
 
