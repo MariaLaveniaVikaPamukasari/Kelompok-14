@@ -23,7 +23,7 @@ buku, Memudahkan pengunjung dalam menemukan informasi terkait buku yang sedang d
    Merupakan penjelasan singkat isi dari repository
    
 # System Requirement
-  [berisi persyaratan yang diperlukan untuk menjalankan program, seperti spesifikasi OS, versi python, berkas tambahan pendukung program, library yang harus terpasang pada python, dll. Ditulis berurut ke bawah]
+  library tkinter, dan databse buku, struktur database tesebut setiap seluruh informasi bukunya di pisahkan dengan newline, sedangkan untuk judul, pengarang, toko buku, dll di pisahkan berdasarkan koma.
   
    
 # Penjelasan Singkat Program
